@@ -1,4 +1,8 @@
 package com.example.testapp.domain
 
-class EpisodeRepository() {
+interface EpisodeRepository {
+
+    suspend fun requestFreshEpisode(paginationConfig: PaginationConfig): EpisodeDomain
+
+    suspend fun requestCachedEpisode(): EpisodeDomain
 }

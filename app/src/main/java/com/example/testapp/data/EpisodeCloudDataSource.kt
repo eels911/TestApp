@@ -15,7 +15,7 @@ interface EpisodeCloudDataSource {
         override suspend fun requestListOfEpisodes(
             paginationConfig: PaginationConfig
         ) = handle {
-            episodesService.getAllEpisodes(paginationConfig.page())
+            episodesService.getAllEpisodes(paginationConfig.page(l))
         }
 
     }

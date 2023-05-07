@@ -2,14 +2,14 @@ package com.example.testapp.data
 
 import com.google.gson.annotations.SerializedName
 
-interface ResultEpisode {
+interface EpisodeResult {
 
     interface Mapper<T> {
-        fun map(id: Int, episode: String,name: String,): T
+        fun map(id: Int, episode: String, name: String): T
 
         class ToDomain : Mapper<String> {
 
-            override fun map(id: Int, episode: String,name: String): String {
+            override fun map(id: Int, episode: String, name: String): String {
                 return name
             }
         }
@@ -24,7 +24,7 @@ interface ResultEpisode {
         private val episode: String,
         @SerializedName("name")
         private val name: String
-    ):ResultEpisode {
+    ) : EpisodeResult {
         override fun <T> map(mapper: Mapper<T>): T =
             mapper.map(id, episode, name)
     }
