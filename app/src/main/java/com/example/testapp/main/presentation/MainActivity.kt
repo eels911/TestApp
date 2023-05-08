@@ -6,20 +6,20 @@ import com.example.testapp.R
 import com.github.johnnysc.coremvvm.presentation.BackPress
 import com.github.johnnysc.coremvvm.sl.ProvideViewModel
 
-class MainActivity : BackPress.Activity<MainViewModel>(), ProvideViewModel{
+class MainActivity : BackPress.Activity<MainViewModel>(), ProvideViewModel {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    val fragmentFactory = BaseFragmentFactory(R.id.container, supportFragmentManager)
+        val fragmentFactory = BaseFragmentFactory(R.id.container, supportFragmentManager)
 
-    viewModel = provideViewModel(MainViewModel::class.java, this)
+        viewModel = provideViewModel(MainViewModel::class.java, this)
 
-    viewModel.observeNavigation(owner = this, fragmentFactory::fragment)
-}
+        viewModel.observeNavigation(owner = this, fragmentFactory::fragment)
+    }
 
-override fun <T : androidx.lifecycle.ViewModel> provideViewModel(
-    clazz: Class<T>,
-    owner: ViewModelStoreOwner
-): T = (application as ProvideViewModel).provideViewModel(clazz, owner)
+    override fun <T : androidx.lifecycle.ViewModel> provideViewModel(
+        clazz: Class<T>,
+        owner: ViewModelStoreOwner
+    ): T = (application as ProvideViewModel).provideViewModel(clazz, owner)
 }
