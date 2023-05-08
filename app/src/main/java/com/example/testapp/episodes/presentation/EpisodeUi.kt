@@ -1,4 +1,4 @@
-package com.example.testapp.presentation
+package com.example.testapp.episodes.presentation
 
 import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
 import com.github.johnnysc.coremvvm.presentation.adapter.MyView

@@ -1,6 +1,6 @@
-package com.example.testapp.data
+package com.example.testapp.episodes.data
 
-import com.example.testapp.domain.EpisodeDomain
+import com.example.testapp.episodes.domain.EpisodeDomain
 import com.google.gson.annotations.SerializedName
 
 interface EpisodeResponse {

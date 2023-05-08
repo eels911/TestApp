@@ -1,4 +1,4 @@
-package com.example.testapp.data
+package com.example.testapp.episodes.data
 
 import retrofit2.http.GET
 import retrofit2.http.Query

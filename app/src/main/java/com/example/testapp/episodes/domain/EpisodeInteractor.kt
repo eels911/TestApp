@@ -1,4 +1,4 @@
-package com.example.testapp.domain
+package com.example.testapp.episodes.domain
 
 import com.github.johnnysc.coremvvm.core.Dispatchers
 import com.github.johnnysc.coremvvm.data.HandleError

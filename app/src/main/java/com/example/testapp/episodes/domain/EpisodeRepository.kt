@@ -1,4 +1,4 @@
-package com.example.testapp.domain
+package com.example.testapp.episodes.domain
 
 interface EpisodeRepository {
 
