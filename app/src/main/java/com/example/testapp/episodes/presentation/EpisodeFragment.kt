@@ -1,4 +1,4 @@
-package com.example.testapp.presentation
+package com.example.testapp.episodes.presentation
 
 import android.os.Bundle
 import android.view.View

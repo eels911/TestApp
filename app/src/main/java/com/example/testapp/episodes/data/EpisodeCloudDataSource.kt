@@ -1,6 +1,6 @@
-package com.example.testapp.data
+package com.example.testapp.episodes.data
 
-import com.example.testapp.domain.PaginationConfig
+import com.example.testapp.episodes.domain.PaginationConfig
 import com.github.johnnysc.coremvvm.data.CloudDataSource
 import com.github.johnnysc.coremvvm.data.HandleError
 

@@ -1,7 +1,7 @@
-package com.example.testapp.presentation
+package com.example.testapp.episodes.presentation
 
-import com.example.testapp.domain.EpisodeDomain
-import com.example.testapp.domain.EpisodeInteractor
+import com.example.testapp.episodes.domain.EpisodeDomain
+import com.example.testapp.episodes.domain.EpisodeInteractor
 import com.github.johnnysc.coremvvm.core.Dispatchers
 import com.github.johnnysc.coremvvm.presentation.BackPress
 import com.github.johnnysc.coremvvm.presentation.CanGoBack

@@ -1,8 +1,8 @@
-package com.example.testapp.data
+package com.example.testapp.episodes.data
 
-import com.example.testapp.domain.EpisodeDomain
-import com.example.testapp.domain.EpisodeRepository
-import com.example.testapp.domain.PaginationConfig
+import com.example.testapp.episodes.domain.EpisodeDomain
+import com.example.testapp.episodes.domain.EpisodeRepository
+import com.example.testapp.episodes.domain.PaginationConfig
 
 class BaseEpisodeRepository(
     private val episodeCloudDataSource: EpisodeCloudDataSource,

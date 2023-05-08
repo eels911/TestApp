@@ -1,6 +1,6 @@
-package com.example.testapp.data
+package com.example.testapp.episodes.data
 
-import com.example.testapp.domain.EpisodeRepository
+import com.example.testapp.episodes.domain.EpisodeRepository
 import com.github.johnnysc.coremvvm.domain.HandleDomainError
 import com.github.johnnysc.coremvvm.sl.CoreModule
 
