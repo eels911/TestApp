@@ -1,5 +1,6 @@
 package com.example.testapp.episodes.domain
 
+import com.example.testapp.episodes.presentation.EpisodeUi
 import com.github.johnnysc.coremvvm.core.Dispatchers
 import com.github.johnnysc.coremvvm.data.HandleError
 import com.github.johnnysc.coremvvm.domain.Interactor
