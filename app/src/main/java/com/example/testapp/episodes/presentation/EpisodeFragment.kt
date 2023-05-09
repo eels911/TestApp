@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.R
+import com.example.testapp.episodes.presentation.adapter.EpisodeAdapter
 import com.github.johnnysc.coremvvm.presentation.BackPress
 import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
 
@@ -16,6 +17,12 @@ class EpisodeFragment() : BackPress.Fragment<List<ItemUi>, EpisodeViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+
+        val episodeAdapter = EpisodeAdapter.Factory().provide()
+
+        recyclerView.adapter = episodeAdapter
+
+        viewModel.observe(this, episodeAdapter::map)
     }
 
 }

@@ -5,19 +5,19 @@ import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
 import com.github.johnnysc.coremvvm.presentation.adapter.MyView
 
 class EpisodeUi(
-    private val episode:String,
-    private val name:String
-): ItemUi{
+    //  private val episode:String,
+    private val name: String
+) : ItemUi {
     override fun content(): String = id()
 
-    override fun id(): String = episode
+    override fun id(): String = name
 
     override fun show(vararg views: MyView) {
-        views[0].show(episode)
-        views[1].show(name)
+        //views[0].show(episode)
+        views[0].show(name)
     }
 
-    override fun type(): Int = 4
+    override fun type(): Int = 3
 }
 
 class ProgressItemUi : ItemUi {
@@ -39,8 +39,8 @@ class ProgressItemUi : ItemUi {
 class ErrorItemUi(
     private val refreshEpisode: RefreshEpisode,
     private val errorMessage: String
-): ItemUi{
-    override fun content()= id()
+) : ItemUi {
+    override fun content() = id()
 
     override fun id() = "ItemError"
 
@@ -51,7 +51,7 @@ class ErrorItemUi(
         views[1].show(errorMessage)
     }
 
-    override fun type() = 3
+    override fun type() = 2
 
     class BaseMapper(
         private val refreshEpisode: RefreshEpisode
