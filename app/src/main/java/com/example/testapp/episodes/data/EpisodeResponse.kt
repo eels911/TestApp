@@ -33,7 +33,7 @@ interface EpisodeResponse {
         @SerializedName("previous")
         private val previous: String?,
         @SerializedName("results")
-        private val results: List<EpisodeResult>
+        private val results: List<EpisodeResult.Base>
     ) : EpisodeResponse {
         override fun <T> map(mapper: Mapper<T>): T = mapper.map(count, next, previous, results)
     }
