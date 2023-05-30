@@ -2,6 +2,7 @@ package com.example.testapp.main.presentation
 
 import androidx.fragment.app.FragmentManager
 import com.example.testapp.episodes.presentation.EpisodeNavigationScreen
+import com.example.testapp.viewedepisodes.presentation.ViewedNavigationScreen
 import com.github.johnnysc.coremvvm.presentation.FragmentFactory
 import com.github.johnnysc.coremvvm.presentation.NavigationScreen
 
@@ -14,6 +15,7 @@ class BaseFragmentFactory(
 ) {
 
     override val screens: List<NavigationScreen> = listOf(
-        EpisodeNavigationScreen()
+        EpisodeNavigationScreen(),
+        ViewedNavigationScreen()
     )
 }

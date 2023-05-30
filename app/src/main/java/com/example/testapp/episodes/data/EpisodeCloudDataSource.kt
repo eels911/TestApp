@@ -17,6 +17,5 @@ interface EpisodeCloudDataSource {
         ) = handle {
             episodesService.getAllEpisodes(paginationConfig.page())
         }
-
     }
 }

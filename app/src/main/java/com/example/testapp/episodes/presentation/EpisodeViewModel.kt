@@ -1,27 +1,31 @@
 package com.example.testapp.episodes.presentation
 
-import android.content.ClipData.Item
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.example.testapp.episodes.domain.EpisodeDomain
 import com.example.testapp.episodes.domain.EpisodeInteractor
 import com.github.johnnysc.coremvvm.core.Dispatchers
 import com.github.johnnysc.coremvvm.core.Mapper
-import com.github.johnnysc.coremvvm.presentation.*
+import com.github.johnnysc.coremvvm.presentation.BackPress
+import com.github.johnnysc.coremvvm.presentation.BaseViewModel
+import com.github.johnnysc.coremvvm.presentation.CanGoBack
+import com.github.johnnysc.coremvvm.presentation.Communication
+import com.github.johnnysc.coremvvm.presentation.ProgressCommunication
+import com.github.johnnysc.coremvvm.presentation.Visibility
 import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
 
 class EpisodeViewModel(
-    canGoBackCallback: CanGoBack.Callback,
     refreshEpisode: Observe<Unit>,
-    episodeUiMapper: EpisodeDomain.Mapper<List<ItemUi>>,
-    private val errorMapper: Mapper<String, List<ItemUi>>,
-    progressMapper: Mapper<Unit,List<ItemUi>>,
-    episodeInteractor: EpisodeInteractor,
+    canGoBackCallback: CanGoBack.Callback,
+    private val episodeInteractor: EpisodeInteractor,
+   // private val errorMapper: ErrorItemUi.BaseMapper,
+    progressMapper: Mapper<Unit, List<ItemUi>>,
+    progressCommunication: ProgressCommunication.Update,
     dispatchers: Dispatchers,
-    private val errorCommunication: Communication.Mutable<String>,
-    communication: Communication.Mutable<List<ItemUi>>
+ //   private val errorCommunication: Communication.Mutable<String>,
+    communication: EpisodeCommunication
 ) :
-    BackPress.ViewModel<List<ItemUi>>(
+    BackPress.ViewModel<EpisodesUi>(
         canGoBackCallback,
         communication,
         dispatchers
@@ -29,32 +33,29 @@ class EpisodeViewModel(
     private var canGoBack = true
 
     private val atFinish = suspend {
-        canGoBack = true
+        progressCommunication.map(Visibility.Gone())
+        canGoBack= true
     }
 
     private val canGoBackCallbackInner = object : CanGoBack {
         override fun canGoBack() = canGoBack
     }
 
-    private val result: suspend (EpisodeDomain) -> Unit = { episodeDomain ->
-        val uiState = episodeDomain.map(episodeUiMapper)
-        communication.map(uiState)
-    }
 
     init {
         canGoBack = false
         refreshEpisode.observe {
-            communication.map(progressMapper.map(Unit))
-            handle { episodeInteractor.fetchListOfEpisode(atFinish, result) }
+            progressCommunication.map(Visibility.Visible())
+            handle {
+                episodeInteractor.fetchListOfEpisode(atFinish) { communication.map(it) }
+            }
         }
-    }
+        }
 
-    override fun updateCallbacks() = canGoBackCallback.updateCallback(canGoBackCallbackInner)
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<List<ItemUi>>) {
-        super.observe(owner, observer)
-        errorCommunication.observe(owner,{communication.map(errorMapper.map(it))})
-    }
+  override fun updateCallbacks() = canGoBackCallback.updateCallback(canGoBackCallbackInner)
+
+
 
 }
 

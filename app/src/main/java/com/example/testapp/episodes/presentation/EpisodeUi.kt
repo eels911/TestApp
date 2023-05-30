@@ -1,21 +1,31 @@
 package com.example.testapp.episodes.presentation
 
+import android.view.View
+import com.example.testapp.episodes.data.Viewed
+import com.example.testapp.viewedepisodes.data.ChangeViewed
 import com.github.johnnysc.coremvvm.core.Mapper
 import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
 import com.github.johnnysc.coremvvm.presentation.adapter.MyView
 
 class EpisodeUi(
-    //  private val episode:String,
-    private val name: String
+   // private val episode: String,
+    private val name: String,
+    private val episode: String,
+    private val isViewed: Boolean,
+    private val viewed: ChangeViewed
 ) : ItemUi {
-    override fun content(): String = id()
+    override fun content(): String = name + episode + isViewed
 
-    override fun id(): String = name
 
     override fun show(vararg views: MyView) {
         //views[0].show(episode)
         views[0].show(name)
+        views[0].check(isViewed)
+        views[0].handleClick {
+            viewed.changeViewed(name)
+        }
     }
+    override fun id(): String = name
 
     override fun type(): Int = 3
 }
@@ -59,7 +69,6 @@ class ErrorItemUi(
 
         override fun map(data: String) = listOf(ErrorItemUi(refreshEpisode, data))
     }
-
 }
 
 class EmptyItemUi(

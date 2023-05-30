@@ -1,8 +1,9 @@
 package com.example.testapp.episodes.domain
 
-interface EpisodeRepository {
+import com.example.testapp.episodes.presentation.EpisodesUi
+import com.example.testapp.viewedepisodes.data.ChangeViewed
 
-    suspend fun requestFreshEpisode(paginationConfig: PaginationConfig): EpisodeDomain
+interface EpisodeRepository: ChangeViewed {
 
-    suspend fun requestCachedEpisode(): EpisodeDomain
+    suspend fun requestCachedEpisode(paginationConfig: PaginationConfig): EpisodeDomain
 }

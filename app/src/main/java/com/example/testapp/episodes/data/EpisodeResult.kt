@@ -7,12 +7,19 @@ interface EpisodeResult {
     interface Mapper<T> {
         fun map(id: Int, episode: String, name: String): T
 
-        class ToDomain : Mapper<String> {
+        class ToString : Mapper<Pair<String,String>> {
 
-            override fun map(id: Int, episode: String, name: String): String {
-                return name
+            override fun map(id: Int, episode: String, name: String): Pair<String, String> {
+                return Pair(episode,name)
             }
         }
+    }
+
+
+
+    class Empty : EpisodeResult {
+        override fun <T> map(mapper: Mapper<T>): T =
+            mapper.map(0, "none", "none")
     }
 
     fun <T> map(mapper: Mapper<T>): T
@@ -28,5 +35,6 @@ interface EpisodeResult {
         override fun <T> map(mapper: Mapper<T>): T =
             mapper.map(id, episode, name)
     }
+
 
 }

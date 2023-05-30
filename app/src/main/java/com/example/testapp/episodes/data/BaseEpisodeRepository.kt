@@ -7,13 +7,15 @@ import com.example.testapp.episodes.domain.PaginationConfig
 class BaseEpisodeRepository(
     private val episodeCloudDataSource: EpisodeCloudDataSource,
     private val toDomainMapper: EpisodeResponse.Mapper<EpisodeDomain>,
-    private val cacheDataSource: EpisodeCacheDataSource.Mutable
+    private val cacheDataSource: ViewedCacheDataSource,
+    private val cache: EpisodesCache.Save
 ) : EpisodeRepository {
-    override suspend fun requestFreshEpisode(paginationConfig: PaginationConfig): EpisodeDomain {
+    override suspend fun requestCachedEpisode(paginationConfig: PaginationConfig): EpisodeDomain {
         val cloud = episodeCloudDataSource.requestListOfEpisodes(paginationConfig)
-        cacheDataSource.save(cloud)
+        cache.save(cloud)
         return cloud.map(toDomainMapper)
     }
 
-    override suspend fun requestCachedEpisode() = cacheDataSource.read().map(toDomainMapper)
+    override fun changeViewed(id: String) = cacheDataSource.changeViewed(id)
+
 }
