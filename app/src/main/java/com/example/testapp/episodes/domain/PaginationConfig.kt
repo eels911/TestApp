@@ -6,7 +6,7 @@ interface PaginationConfig {
 
     class Base : PaginationConfig {
 
-        override fun page() = 3
+        override fun page() = 1
 
     }
 }

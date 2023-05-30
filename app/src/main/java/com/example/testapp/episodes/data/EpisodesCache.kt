@@ -1,10 +1,9 @@
 package com.example.testapp.episodes.data
 
-import com.github.johnnysc.coremvvm.core.Read
-import com.github.johnnysc.coremvvm.core.Save
-
-class EpisodeCacheDataSource {
-    interface Mutable : Save<EpisodeResponse>, Read<EpisodeResponse>
+class EpisodesCache {
+    interface Save : com.github.johnnysc.coremvvm.core.Save<EpisodeResponse>
+    interface Read : com.github.johnnysc.coremvvm.core.Read<EpisodeResponse>
+    interface Mutable : Save, Read
 
     class Base(
         private var data: EpisodeResponse = EpisodeResponse.Empty()

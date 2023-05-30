@@ -1,31 +1,31 @@
-package com.example.testapp.episodes.presentation
+package com.example.testapp.viewedepisodes.presentation
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.R
+import com.example.testapp.episodes.presentation.EpisodesUi
 import com.example.testapp.episodes.presentation.adapter.EpisodeAdapter
-import com.github.johnnysc.coremvvm.presentation.BackPress
 import com.github.johnnysc.coremvvm.presentation.BaseFragment
-import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
-// todo backpressed
-class EpisodeFragment : BaseFragment<EpisodeViewModel>() {
 
+class ViewedFragment: BaseFragment<ViewedViewModel>() {
     override val layoutResId: Int = R.layout.fragment_episode
 
-    override fun viewModelClass(): Class<EpisodeViewModel> = EpisodeViewModel::class.java
+    override fun viewModelClass() = ViewedViewModel::class.java
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-
-        val episodeAdapter = EpisodeAdapter.Factory().provide()
-
-        recyclerView.adapter = episodeAdapter
+        val episodesAdapter = EpisodeAdapter.Factory().provide()
+        recyclerView.adapter = episodesAdapter
 
         viewModel.observe(this){episodesUi ->
-            episodesUi.map(episodeAdapter)
+            episodesUi.map(episodesAdapter)
         }
+        viewModel.observeUpdate(this) {
+            viewModel.update()
+        }
+
     }
 
 }
