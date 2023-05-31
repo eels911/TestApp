@@ -15,16 +15,16 @@ class ViewedModule(
     private val coreModule: CoreModule,
     private val cacheDataSource: ViewedCacheDataSource,
     private val cache: EpisodesCache.Read
-): Module<ViewedViewModel> {
+) : Module<ViewedViewModel> {
     override fun viewModel(): ViewedViewModel {
         val communication = ViewedCommunication.Base()
         val update = UpdateViewedEpisodes.Base()
         return ViewedViewModel(
-            update,ViewedRepository.Base(
+            update, ViewedRepository.Base(
                 cache,
                 ViewedMapper.Base(
                     cacheDataSource,
-                    ChangeViewed.Base(cacheDataSource,update)
+                    ChangeViewed.Base(cacheDataSource, update)
                 )
             ),
             communication,

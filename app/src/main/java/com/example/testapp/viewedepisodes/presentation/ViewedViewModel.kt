@@ -12,7 +12,7 @@ class ViewedViewModel(
     private val repository: ViewedRepository,
     communication: ViewedCommunication,
     dispatchers: Dispatchers
-): BaseViewModel<EpisodesUi>(
+) : BaseViewModel<EpisodesUi>(
     communication, dispatchers
 ) {
 
@@ -22,6 +22,6 @@ class ViewedViewModel(
 
     fun update() = communication.map(repository.viewedList())
 
-    fun observeUpdate(owner: LifecycleOwner,observer: Observer<Boolean>) =
-        update.observe(owner,observer)
+    fun observeUpdate(owner: LifecycleOwner, observer: Observer<Boolean>) =
+        update.observe(owner, observer)
 }
