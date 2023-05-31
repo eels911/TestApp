@@ -9,7 +9,7 @@ interface ChangeViewed {
     class Base(
         private val changeViewed: ChangeViewed,
         private val communication: UpdateViewedEpisodes.Update
-    ) : ChangeViewed{
+    ) : ChangeViewed {
         override fun changeViewed(id: String) {
             changeViewed.changeViewed(id)
             communication.map(true)

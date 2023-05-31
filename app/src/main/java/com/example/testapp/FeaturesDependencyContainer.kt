@@ -29,14 +29,18 @@ class FeaturesDependencyContainer(
     private val cache = EpisodesCache.Base()
     override fun <T : ViewModel> module(clazz: Class<T>): Module<*> = when (clazz) {
         MainViewModel::class.java -> MainModule(coreModule)
-        EpisodeViewModel::class.java -> EpisodeModule(coreModule,
+        EpisodeViewModel::class.java -> EpisodeModule(
+            coreModule,
             viewedCacheDataSource,
-            cache)
+            cache
+        )
+
         ViewedViewModel::class.java -> ViewedModule(
             coreModule,
             viewedCacheDataSource,
             cache
         )
+
         else -> dependencyContainer.module(clazz)
     }
 

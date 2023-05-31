@@ -5,7 +5,11 @@ import androidx.lifecycle.Observer
 import com.example.testapp.episodes.presentation.EpisodeNavigationScreen
 import com.example.testapp.viewedepisodes.presentation.ViewedNavigationScreen
 import com.github.johnnysc.coremvvm.core.Dispatchers
-import com.github.johnnysc.coremvvm.presentation.*
+import com.github.johnnysc.coremvvm.presentation.BackPress
+import com.github.johnnysc.coremvvm.presentation.CanGoBack
+import com.github.johnnysc.coremvvm.presentation.GlobalErrorCommunication
+import com.github.johnnysc.coremvvm.presentation.NavigationCommunication
+import com.github.johnnysc.coremvvm.presentation.NavigationScreen
 
 class MainViewModel(
     private val navigationCommunication: NavigationCommunication.Mutable,

@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <com.github.johnnysc.coremvvm.presentation.adapter.MyTextView
-        android:id="@+id/name"
+        android:id="@+id/number"
         tool:text="Episode number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -16,16 +16,6 @@
         android:textSize="18sp"
         />
 
-    <com.github.johnnysc.coremvvm.presentation.adapter.MyTextView
-        android:id="@+id/episode"
-        tool:text="Episode name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:layout_weight="1"
-        android:paddingVertical="8dp"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
     <com.github.johnnysc.coremvvm.presentation.adapter.MyCheckBox
         android:id="@+id/markViewed"

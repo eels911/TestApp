@@ -14,8 +14,7 @@ class EmptyViewHolder(parent: ViewGroup) : RefreshViewHolder(parent, R.layout.it
 
 class EpisodeViewHolder(parent: ViewGroup) : AbstractViewHolder(parent, R.layout.item_episode) {
     override fun bind(item: ItemUi) {
-        item.show(itemView.findViewById<MyTextView>(R.id.name))
-        item.show(itemView.findViewById<MyTextView>(R.id.episode))
+        item.show(itemView.findViewById<MyTextView>(R.id.number))
         item.show(itemView.findViewById<MyCheckBox>(R.id.markViewed))
     }
 }

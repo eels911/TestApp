@@ -11,6 +11,7 @@ interface EpisodeResponse {
     ) : EpisodeResponse {
         override fun <T> map(mapper: Mapper<T>): T = mapper.map(results)
     }
+
     interface Mapper<T> {
         fun map(results: List<EpisodeResult>): T
 
@@ -27,7 +28,6 @@ interface EpisodeResponse {
     }
 
     fun <T> map(mapper: Mapper<T>): T
-
 
 
     class Empty : EpisodeResponse {
