@@ -16,15 +16,21 @@ interface EpisodeResult {
     }
 
 
+
+    class Empty : EpisodeResult {
+        override fun <T> map(mapper: Mapper<T>): T =
+            mapper.map(0, "none", "none")
+    }
+
     fun <T> map(mapper: Mapper<T>): T
 
     data class Base(
         @SerializedName("id")
         private val id: Int,
-        @SerializedName("name")
-        private val name: String,
         @SerializedName("episode")
         private val episode: String,
+        @SerializedName("name")
+        private val name: String
     ) : EpisodeResult {
         override fun <T> map(mapper: Mapper<T>): T =
             mapper.map(id, episode, name)

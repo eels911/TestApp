@@ -10,7 +10,7 @@ interface ViewedRepository {
     class Base(
         private val cache: EpisodesCache.Read,
         private val mapper: ViewedMapper
-    ) : ViewedRepository {
+    ): ViewedRepository{
         override fun viewedList(): EpisodesUi {
             val list = cache.read().map(mapper)
             return EpisodesUi.Base(list)

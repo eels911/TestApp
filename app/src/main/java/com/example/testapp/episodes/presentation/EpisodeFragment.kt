@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.R
 import com.example.testapp.episodes.presentation.adapter.EpisodeAdapter
 import com.github.johnnysc.coremvvm.presentation.BackPress
+import com.github.johnnysc.coremvvm.presentation.BaseFragment
 import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
-
-class EpisodeFragment : BackPress.Fragment<List<ItemUi>, EpisodeViewModel>() {
+// todo backpressed
+class EpisodeFragment : BaseFragment<EpisodeViewModel>() {
 
     override val layoutResId: Int = R.layout.fragment_episode
 
@@ -22,7 +23,9 @@ class EpisodeFragment : BackPress.Fragment<List<ItemUi>, EpisodeViewModel>() {
 
         recyclerView.adapter = episodeAdapter
 
-        viewModel.observe(this, episodeAdapter::map)
+        viewModel.observe(this){episodesUi ->
+            episodesUi.map(episodeAdapter)
+        }
     }
 
 }

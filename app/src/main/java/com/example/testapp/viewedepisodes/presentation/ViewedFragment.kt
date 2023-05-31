@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.R
+import com.example.testapp.episodes.presentation.EpisodesUi
 import com.example.testapp.episodes.presentation.adapter.EpisodeAdapter
 import com.github.johnnysc.coremvvm.presentation.BaseFragment
 
-class ViewedFragment : BaseFragment<ViewedViewModel>() {
+class ViewedFragment: BaseFragment<ViewedViewModel>() {
     override val layoutResId: Int = R.layout.fragment_episode
 
     override fun viewModelClass() = ViewedViewModel::class.java
@@ -18,7 +19,7 @@ class ViewedFragment : BaseFragment<ViewedViewModel>() {
         val episodesAdapter = EpisodeAdapter.Factory().provide()
         recyclerView.adapter = episodesAdapter
 
-        viewModel.observe(this) { episodesUi ->
+        viewModel.observe(this){episodesUi ->
             episodesUi.map(episodesAdapter)
         }
         viewModel.observeUpdate(this) {

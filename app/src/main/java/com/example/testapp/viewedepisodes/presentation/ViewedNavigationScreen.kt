@@ -1,5 +1,6 @@
 package com.example.testapp.viewedepisodes.presentation
 
+import android.view.View
 import com.github.johnnysc.coremvvm.presentation.NavigationScreen
 import com.github.johnnysc.coremvvm.presentation.ShowStrategy
 

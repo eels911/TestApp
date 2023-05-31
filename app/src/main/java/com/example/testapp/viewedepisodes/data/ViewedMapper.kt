@@ -2,6 +2,7 @@ package com.example.testapp.viewedepisodes.data
 
 import com.example.testapp.episodes.data.EpisodeResponse
 import com.example.testapp.episodes.data.EpisodeResult
+import com.example.testapp.episodes.data.EpisodesCloud
 import com.example.testapp.episodes.data.Viewed
 import com.example.testapp.episodes.presentation.EpisodeUi
 import com.github.johnnysc.coremvvm.presentation.adapter.ItemUi
